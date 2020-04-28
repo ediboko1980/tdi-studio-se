@@ -45,12 +45,10 @@ final java.util.Map<String, String> configuration_<%=cid%> = new java.util.HashM
                         }
                         String value = lineValues.get(items[j]);
                         if (!org.talend.core.model.utils.ContextParameterUtils.isDynamic(value)) {
-                            if (org.talend.core.model.utils.TalendTextUtils.checkTextQuotation(value)) {
+                            if (org.talend.core.model.utils.TalendTextUtils.isEnclosed(value)) {
                                 value = org.talend.core.model.utils.TalendTextUtils.removeQuotes(value);
-                                value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
-                            } else {
-                                value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
                             }
+                            value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
                         }
 %>
                         configuration_<%=cid%>.put("<%=key%>",<%=value%>);
@@ -121,12 +119,10 @@ final java.util.Map<String, String> configuration_<%=cid%> = new java.util.HashM
                         value = "String.valueOf(" + value + ")";
                     }
                     else {
-                        if (org.talend.core.model.utils.TalendTextUtils.checkTextQuotation(value)) {
+                        if (org.talend.core.model.utils.TalendTextUtils.isEnclosed(value)) {
                             value = org.talend.core.model.utils.TalendTextUtils.removeQuotes(value);
-                            value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
-                        } else {
-                            value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
                         }
+                        value = org.talend.core.model.utils.TalendTextUtils.addQuotes(value);
                     }
                 }
                 if (value != null) {
